@@ -1,0 +1,9 @@
+server:
+  port: 18080
+
+spring:
+  application:
+    name: clientes-service
+  grpc:
+    server:
+      port: 19090

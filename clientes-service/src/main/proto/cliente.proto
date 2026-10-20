@@ -1,0 +1,17 @@
+syntax = "proto3";
+
+option java_package = "com.uptc.grpcmsg.clientesservice.grpc";
+option java_multiple_files = true;
+
+service ClienteGrpc {
+  rpc ExisteCliente (ClienteRequest) returns (ClienteResponse) {}
+}
+
+message ClienteRequest {
+  int64 id = 1;
+}
+
+message ClienteResponse {
+  bool existe = 1;
+  string nombreCompleto = 2;
+}

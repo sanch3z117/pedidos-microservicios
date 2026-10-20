@@ -1,0 +1,15 @@
+server:
+  port: 18082
+
+spring:
+  application:
+    name: cocina-service
+  kafka:
+    bootstrap-servers: localhost:19092
+    consumer:
+      group-id: cocina-group
+      key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+      value-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+      auto-offset-reset: earliest
+  rabbitmq:
+    port: 5673

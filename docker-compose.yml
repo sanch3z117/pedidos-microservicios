@@ -1,0 +1,22 @@
+services:
+  kafka:
+    image: apache/kafka:latest
+    container_name: pedidos-kafka
+    ports:
+      - "19092:19092"
+    environment:
+      KAFKA_NODE_ID: 1
+      KAFKA_PROCESS_ROLES: broker,controller
+      KAFKA_LISTENERS: PLAINTEXT://0.0.0.0:19092,CONTROLLER://0.0.0.0:9093
+      KAFKA_ADVERTISED_LISTENERS: PLAINTEXT://localhost:19092
+      KAFKA_CONTROLLER_LISTENER_NAMES: CONTROLLER
+      KAFKA_CONTROLLER_QUORUM_VOTERS: 1@pedidos-kafka:9093
+      KAFKA_LISTENER_SECURITY_PROTOCOL_MAP: CONTROLLER:PLAINTEXT,PLAINTEXT:PLAINTEXT
+      KAFKA_OFFSETS_TOPIC_REPLICATION_FACTOR: 1
+
+  rabbitmq:
+    image: rabbitmq:4-management
+    container_name: pedidos-rabbitmq
+    ports:
+      - "5673:5672"
+      - "15673:15672"

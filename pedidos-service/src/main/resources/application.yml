@@ -1,0 +1,25 @@
+server:
+  port: 18081
+
+spring:
+  application:
+    name: pedidos-service
+  grpc:
+    client:
+      channel:
+        clientes:
+          target: static://localhost:19090
+  kafka:
+    bootstrap-servers: localhost:19092
+    producer:
+      key-serializer: org.apache.kafka.common.serialization.StringSerializer
+      value-serializer: org.apache.kafka.common.serialization.StringSerializer
+  rabbitmq:
+    port: 5673
+  datasource:
+    url: jdbc:h2:file:./data/pedidos
+    username: sa
+    password: ""
+  jpa:
+    hibernate:
+      ddl-auto: update
