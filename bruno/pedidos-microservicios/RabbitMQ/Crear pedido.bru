@@ -1,0 +1,29 @@
+meta {
+  name: Crear pedido
+  type: http
+  seq: 1
+}
+
+post {
+  url: {{pedidosUrl}}/api/pedidos-rabbit
+  body: none
+  auth: none
+}
+
+params:query {
+  clienteId: 2
+  pedidoId: P-2002
+}
+
+script:post-response {
+  test("responde 200", function() {
+    expect(res.status).to.equal(200);
+  });
+  test("confirma el envío por RabbitMQ", function() {
+    expect(res.body).to.contain("RabbitMQ");
+  });
+}
+
+docs {
+  cocina-service debe imprimir: [cocina-service · RabbitMQ] Empezando a preparar: ...
+}

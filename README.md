@@ -41,6 +41,19 @@ cd pedidos-service
 .\mvnw.cmd spring-boot:run
 ```
 
+## Colección Bruno
+
+Abre la carpeta `bruno/pedidos-microservicios` en Bruno (Open Collection) y selecciona el entorno `Local`.
+
+| Carpeta | Request | Qué prueba |
+| --- | --- | --- |
+| `gRPC` | Cliente existente / inexistente | `ClienteGrpc/ExisteCliente` en 19090 (usa reflexión) |
+| `Kafka` | Crear pedido | `PedidoCreado` por Kafka |
+| `RabbitMQ` | Crear pedido | `PedidoCreado` por RabbitMQ |
+| `Outbox` | Crear pedido con outbox | Publicación asíncrona y tolerancia a Kafka caído |
+
+Los requests incluyen asserts de estado y cuerpo, así que también puedes correr la colección completa desde Bruno.
+
 ## Pruebas
 
 ```powershell

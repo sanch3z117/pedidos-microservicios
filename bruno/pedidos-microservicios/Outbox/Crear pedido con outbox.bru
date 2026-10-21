@@ -1,0 +1,31 @@
+meta {
+  name: Crear pedido con outbox
+  type: http
+  seq: 1
+}
+
+post {
+  url: {{pedidosUrl}}/api/pedidos-outbox
+  body: none
+  auth: none
+}
+
+params:query {
+  clienteId: 1
+  pedidoId: P-4001
+}
+
+script:post-response {
+  test("responde 200", function() {
+    expect(res.status).to.equal(200);
+  });
+  test("confirma el guardado en el outbox", function() {
+    expect(res.body).to.contain("outbox");
+  });
+}
+
+docs {
+  Guarda pedido y evento en la misma transacción.
+  OutboxPublisher publica cada 2 s en pedidos.creados y cocina-service lo recibe.
+  Traza esperada en pedidos-service: Outbox: evento N publicado en pedidos.creados.
+}

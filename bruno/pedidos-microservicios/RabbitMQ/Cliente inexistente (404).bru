@@ -1,0 +1,22 @@
+meta {
+  name: Cliente inexistente (404)
+  type: http
+  seq: 2
+}
+
+post {
+  url: {{pedidosUrl}}/api/pedidos-rabbit
+  body: none
+  auth: none
+}
+
+params:query {
+  clienteId: 99
+  pedidoId: P-9999
+}
+
+script:post-response {
+  test("responde 404", function() {
+    expect(res.status).to.equal(404);
+  });
+}

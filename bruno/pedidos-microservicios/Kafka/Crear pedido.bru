@@ -1,0 +1,30 @@
+meta {
+  name: Crear pedido
+  type: http
+  seq: 1
+}
+
+post {
+  url: {{pedidosUrl}}/api/pedidos
+  body: none
+  auth: none
+}
+
+params:query {
+  clienteId: 1
+  pedidoId: P-1001
+}
+
+script:post-response {
+  test("responde 200", function() {
+    expect(res.status).to.equal(200);
+  });
+  test("confirma la publicación", function() {
+    expect(res.body).to.contain("evento publicado");
+  });
+}
+
+docs {
+  Verifica el cliente por gRPC y publica PedidoCreado en pedidos.creados.
+  cocina-service debe imprimir: [cocina-service] Empezando a preparar: ...
+}

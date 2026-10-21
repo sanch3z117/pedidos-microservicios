@@ -1,0 +1,28 @@
+meta {
+  name: Crear pedido con Kafka caído
+  type: http
+  seq: 2
+}
+
+post {
+  url: {{pedidosUrl}}/api/pedidos-outbox
+  body: none
+  auth: none
+}
+
+params:query {
+  clienteId: 2
+  pedidoId: P-4002
+}
+
+script:post-response {
+  test("responde 200 aunque Kafka esté caído", function() {
+    expect(res.status).to.equal(200);
+  });
+}
+
+docs {
+  Prueba de garantía del outbox: detén Kafka antes de lanzar el request
+  (docker compose stop kafka). El pedido responde 200 igualmente y el evento
+  llega a cocina-service cuando Kafka vuelve (docker compose start kafka).
+}

@@ -1,0 +1,6 @@
+{
+  "version": "1",
+  "name": "pedidos-microservicios",
+  "type": "collection",
+  "ignore": ["node_modules", ".git"]
+}

@@ -1,0 +1,23 @@
+meta {
+  name: Cliente existente (id 1)
+  type: grpc
+  seq: 1
+}
+
+grpc {
+  url: {{grpcClientes}}/ClienteGrpc/ExisteCliente
+  method: unary
+  body: json
+  auth: inherit
+}
+
+body:json {
+  {
+    "id": 1
+  }
+}
+
+docs {
+  Requiere clientes-service arriba en 19090.
+  Respuesta esperada: { "existe": true, "nombreCompleto": "Jorge Otálora" }.
+}

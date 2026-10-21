@@ -1,0 +1,22 @@
+meta {
+  name: Cliente inexistente (id 99)
+  type: grpc
+  seq: 3
+}
+
+grpc {
+  url: {{grpcClientes}}/ClienteGrpc/ExisteCliente
+  method: unary
+  body: json
+  auth: inherit
+}
+
+body:json {
+  {
+    "id": 99
+  }
+}
+
+docs {
+  Respuesta esperada: {} (protobuf omite los valores por defecto).
+}

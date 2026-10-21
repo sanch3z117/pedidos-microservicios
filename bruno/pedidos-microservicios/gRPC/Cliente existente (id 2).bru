@@ -1,0 +1,22 @@
+meta {
+  name: Cliente existente (id 2)
+  type: grpc
+  seq: 2
+}
+
+grpc {
+  url: {{grpcClientes}}/ClienteGrpc/ExisteCliente
+  method: unary
+  body: json
+  auth: inherit
+}
+
+body:json {
+  {
+    "id": 2
+  }
+}
+
+docs {
+  Respuesta esperada: { "existe": true, "nombreCompleto": "Laura Gómez" }.
+}
