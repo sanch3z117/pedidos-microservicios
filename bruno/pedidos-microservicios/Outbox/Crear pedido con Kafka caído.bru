@@ -5,14 +5,9 @@ meta {
 }
 
 post {
-  url: {{pedidosUrl}}/api/pedidos-outbox
+  url: {{pedidosUrl}}/api/pedidos-outbox?clienteId=2&pedidoId=P-4002
   body: none
   auth: none
-}
-
-params:query {
-  clienteId: 2
-  pedidoId: P-4002
 }
 
 script:post-response {

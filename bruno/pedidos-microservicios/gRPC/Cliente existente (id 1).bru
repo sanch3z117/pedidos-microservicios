@@ -5,19 +5,24 @@ meta {
 }
 
 grpc {
-  url: {{grpcClientes}}/ClienteGrpc/ExisteCliente
-  method: unary
-  body: json
+  url: {{grpcClientes}}
+  method: /ClienteGrpc/ExisteCliente
+  body: grpc
+  protoPath: protos/cliente.proto
   auth: inherit
+  methodType: unary
 }
 
-body:json {
-  {
-    "id": 1
-  }
+body:grpc {
+  name: message 1
+  content: '''
+    {
+      "id": 1
+    }
+  '''
 }
 
 docs {
-  Requiere clientes-service arriba en 19090.
+  Requiere clientes-service arriba en 19090. Usa el proto local protos/cliente.proto.
   Respuesta esperada: { "existe": true, "nombreCompleto": "Jorge Otálora" }.
 }

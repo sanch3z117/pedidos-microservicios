@@ -5,14 +5,9 @@ meta {
 }
 
 post {
-  url: {{pedidosUrl}}/api/pedidos
+  url: {{pedidosUrl}}/api/pedidos?clienteId=1&pedidoId=P-1001
   body: none
   auth: none
-}
-
-params:query {
-  clienteId: 1
-  pedidoId: P-1001
 }
 
 script:post-response {

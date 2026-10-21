@@ -5,16 +5,21 @@ meta {
 }
 
 grpc {
-  url: {{grpcClientes}}/ClienteGrpc/ExisteCliente
-  method: unary
-  body: json
+  url: {{grpcClientes}}
+  method: /ClienteGrpc/ExisteCliente
+  body: grpc
+  protoPath: protos/cliente.proto
   auth: inherit
+  methodType: unary
 }
 
-body:json {
-  {
-    "id": 99
-  }
+body:grpc {
+  name: message 1
+  content: '''
+    {
+      "id": 99
+    }
+  '''
 }
 
 docs {

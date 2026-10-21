@@ -54,6 +54,18 @@ Abre la carpeta `bruno/pedidos-microservicios` en Bruno (Open Collection) y sele
 
 Los requests incluyen asserts de estado y cuerpo, así que también puedes correr la colección completa desde Bruno.
 
+Las variables (`pedidosUrl`, `grpcClientes`, etc.) están definidas en `collection.bru` con `vars:pre-request`, así funcionan aunque el selector de entorno esté en `None`. `environments/Local.bru` repite los mismos valores para poder cambiarlos por entorno. Los gRPC usan además `protos/cliente.proto` vía `protoPath`. Ojo con el bloque `content`:
+
+```text
+content: '''
+    {
+      "id": 1
+    }
+  '''
+```
+
+Las líneas del JSON deben llevar **4 espacios** de indentación: el parser de `.bru` recorta exactamente 4 caracteres por línea y, con menos, elimina las llaves y el mensaje queda inválido.
+
 ## Pruebas
 
 ```powershell

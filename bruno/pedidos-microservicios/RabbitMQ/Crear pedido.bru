@@ -5,14 +5,9 @@ meta {
 }
 
 post {
-  url: {{pedidosUrl}}/api/pedidos-rabbit
+  url: {{pedidosUrl}}/api/pedidos-rabbit?clienteId=2&pedidoId=P-2002
   body: none
   auth: none
-}
-
-params:query {
-  clienteId: 2
-  pedidoId: P-2002
 }
 
 script:post-response {
